@@ -6,11 +6,20 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
-  {
+  { //Debes establecer por defecto la navbar 
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'navbar',
     pathMatch: 'full'
   },
+  {
+    path: 'buscar',
+    loadChildren: () => import('./buscar/buscar.module').then( m => m.BuscarPageModule)
+  },
+  {
+    path: 'navbar',
+    loadChildren: () => import('./navbar/navbar.module').then( m => m.NavbarPageModule)
+  },
+  
 ];
 
 @NgModule({
