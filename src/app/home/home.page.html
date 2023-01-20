@@ -1,6 +1,6 @@
 
 <ion-content [fullscreen]="true">
-  <libro-comp></libro-comp>
+  <libro-comp *ngFor="let item of listaLibros; let index = index" [indice]="index"></libro-comp>
 </ion-content>
 
 <ion-fab id="btn" slot="fixed" vertical="bottom" horizontal="end">

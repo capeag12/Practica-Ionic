@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar placeholder="Buscar"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar" #busqueda (search)="FiltrarLista(busqueda.value)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  
+  <libro-comp *ngFor="let item of lista; let i=index" [indice]="i"></libro-comp>
 
   
 </ion-content>

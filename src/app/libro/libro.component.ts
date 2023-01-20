@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnInit } from '@angular/core';
+import { Libro } from '../libro';
+import { ServicioService } from '../servicio.service';
 
 @Component({
   standalone:true,
@@ -8,9 +10,14 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LibroComponent implements OnInit {
+  @Input() indice:number=-1 
+  libro:Libro = new Libro("")
+  constructor(private servicio:ServicioService) { 
+  
+  }
 
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.libro = this.servicio.getLibro(this.indice)
+  }
 
 }
