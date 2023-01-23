@@ -10,7 +10,7 @@ import { ServicioService } from '../servicio.service';
 export class BuscarPage implements OnInit {
   lista:Libro[] = []
   constructor(private servicio:ServicioService) {
-      servicio.getLibrosObservable().subscribe(lista => this.lista=lista)
+      servicio.getLibrosFiltradosObs().subscribe(lista => this.lista=lista)
    }
 
   FiltrarLista(text?:string|null){

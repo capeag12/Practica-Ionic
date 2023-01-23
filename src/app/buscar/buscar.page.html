@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar placeholder="Buscar" #busqueda (search)="FiltrarLista(busqueda.value)"></ion-searchbar>
+    <ion-searchbar placeholder="Buscar" #busqueda (ionChange)="FiltrarLista(busqueda.value)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 

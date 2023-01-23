@@ -8,15 +8,23 @@ import { Libro } from './libro';
 export class ServicioService {
   private listaLibros:Libro[]
   private lLibrosSubject:BehaviorSubject<Libro[]>
+  private librosFiltrados:BehaviorSubject<Libro[]>
   constructor() {
     this.listaLibros = []
-    this.listaLibros.push(new Libro("Er gato con botas"))
-    this.listaLibros.push(new Libro("Er quijote"))
+    this.listaLibros.push(new Libro("El gato con botas"))
+    this.listaLibros.push(new Libro("El quijote"))
+    this.listaLibros.push(new Libro("El señor de las moscas"))
+    this.listaLibros.push(new Libro("Metro 2033"))
     this.lLibrosSubject = new BehaviorSubject(this.listaLibros);
+    this.librosFiltrados = new BehaviorSubject(this.listaLibros);
    }
 
   getLibrosObservable():Observable<Libro[]>{
     return this.lLibrosSubject.asObservable()
+  }
+
+  getLibrosFiltradosObs():Observable<Libro[]>{
+    return this.librosFiltrados.asObservable()
   }
 
   addLibro(libro:Libro){
@@ -30,7 +38,7 @@ export class ServicioService {
 
   filtrarLibros(titulo:string){
     if (titulo=="") {
-      this.lLibrosSubject.next(this.listaLibros)
+      this.librosFiltrados.next(this.listaLibros)
     }else{
       let librosFiltrados:Libro[] = []
       this.listaLibros.forEach(element => {
@@ -39,7 +47,7 @@ export class ServicioService {
       }
     
     });
-    this.lLibrosSubject.next(librosFiltrados)
+    this.librosFiltrados.next(librosFiltrados)
     }
 
     
